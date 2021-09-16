@@ -19,7 +19,7 @@ describe('About component', () => {
     it('renders', () => {
         render(<About />);
       });
-    it('matches snapshot DOM node structure',()=>{
+    it('matches snapshot',()=>{
         //asFragment function, which returns a snapshot of the About component
         const {asFragment} =render(<About/>);
         // the expect function with a matcher to assert snapshots match
