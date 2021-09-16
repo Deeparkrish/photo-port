@@ -44,7 +44,7 @@ exports[`Nav component matches snapshot DOM node structure 1`] = `
           class="mx-1 false"
         >
           <span>
-            portraits
+            Portraits
           </span>
         </li>
       </ul>
