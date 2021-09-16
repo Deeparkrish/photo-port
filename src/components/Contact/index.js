@@ -3,38 +3,41 @@ import { validateEmail } from '../../utils/helpers';
 
 
 function ContactForm(){
-    const [formState, setFormState] = useState({ name: '', email: '', message: '' });
-    const { name, email, message } = formState;
-    const [errorMessage, setErrorMessage] = useState('');   
-
-function handleChange(e) {
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const { name, email, message } = formState;
+  const [errorMessage, setErrorMessage] = useState('');   
+  function handleSubmit(e) {
+      e.preventDefault();
+      console.log(formState);
+  }
+  function handleChange(e) {
     // update the name property of formState 
-    if (e.target.name === 'email') {
+    if (e.target.name === 'email')
+    {
       const isValid = validateEmail(e.target.value);
    
       if (!isValid) {
         setErrorMessage('Your email is invalid.');
       } 
-      else {
+      else 
+      {
         if (!e.target.value.length) {
         setErrorMessage(`${e.target.name} is required.`);
         } else {
           setErrorMessage('');
         }
       }
-    if (!errorMessage) {
+      if (!errorMessage) 
+      {
       setFormState({ ...formState, [e.target.name]: e.target.value });
-    }
+      }
   
+    }
   }
-}
-function handleSubmit(e) {
-    e.preventDefault();
-    console.log(formState);
-  }
+
 return (
         <section>
-          <h1>Contact me</h1>
+      <h1 data-testid="h1tag">Contact me</h1>
           <form id="contact-form" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name:</label>
@@ -53,7 +56,7 @@ return (
                 <p className="error-text">{errorMessage}</p>
               </div>
             }
-            <button type="submit">Submit</button>
+            <button data-testid="button" type="submit">Submit</button>
           </form>
         </section>
     );
